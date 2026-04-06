@@ -77,8 +77,9 @@ Pastikan environment Anda memenuhi kebutuhan berikut:
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/username/iot-shield.git
-cd iot-shield
+git clone https://github.com/wazuh/wazuh-docker.git -b v4.7.5
+cd wazuh-docker/single-node
+
 ```
 
 ### 2. Deploy SIEM (Wazuh)
@@ -93,11 +94,12 @@ docker-compose up -d
 Edit file berikut:
 
 ```
-/var/ossec/etc/ossec.conf
+/wazuh-docker/single-node/config/wazuh_cluster/wazuh_manager.conf
+
 ```
 
 Tambahkan konfigurasi:
-
+Langkah 1: Verifikasi command firewall-drop
 ```xml
 <active-response>
   <command>firewall-drop</command>
