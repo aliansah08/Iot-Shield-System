@@ -134,6 +134,7 @@ White List
   <white_list>192.168.1.1</white_list> </global>
 ```
 Simpan file ctrl + x + y enter
+
 ---
 
 ## 🧪 Metodologi Pengujian
