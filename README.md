@@ -137,6 +137,17 @@ Simpan file ctrl + x + y enter
 
 ---
 
+## Penerapan Konfigurasi
+
+Agar perubahan di wazuh_manager.conf bisa terbaca, kita perlu merestart container Manager
+
+Jalankan beris perintah berikut :
+
+```
+docker restart single-node_wazuh.manager_1
+
+```
+
 ## 🧪 Metodologi Pengujian
 
 ### 1. Monitor Log pada Agent
