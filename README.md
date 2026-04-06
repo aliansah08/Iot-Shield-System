@@ -119,7 +119,21 @@ Tambahkan blok active response
   <timeout>60</timeout>
 </active-response>
 ```
+Catatan: Kita set timeout 60 detik agar Anda bisa melihat proses blokir dan lepas blokir (unban) secara cepat saat demo.
 
+
+```
+
+Tambahkan konfigurasi:
+White List
+```xml
+<global>
+  <white_list>127.0.0.1</white_list>
+  <white_list>localhost</white_list>
+  <white_list>172.16.0.0/12</white_list>
+  <white_list>192.168.1.1</white_list> </global>
+```
+Simpan file ctrl + x + y enter
 ---
 
 ## 🧪 Metodologi Pengujian
