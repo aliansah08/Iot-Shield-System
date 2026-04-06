@@ -187,5 +187,12 @@ Sistem ini menyediakan antarmuka visual interaktif untuk:
 * Analisis statistik ancaman
 * Visualisasi real-time aktivitas jaringan
 
+---
 
-Tinggal bilang aja 👍
+## 📊 Mobile Dashboard Via Bot Telegram
+
+<img width="877" height="695" alt="image" src="https://github.com/user-attachments/assets/dfe1b931-6c14-4b9e-9ce5-59705e75b2b7" />
+
+Sistem ini memungkinkan kita memantau perangkat iot dari genggaman tangan secara real time dan mudah digunakan untuk semua user
+
+
