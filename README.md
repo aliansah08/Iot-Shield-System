@@ -138,7 +138,8 @@ Pastikan IP penyerang sudah masuk ke daftar blokir.
 
 ## 📊 Visualisasi Dashboard
 
-> Tambahkan screenshot dashboard Anda di sini
+<img width="1365" height="632" alt="image" src="https://github.com/user-attachments/assets/1bf33631-8af2-43d3-b55f-4e41a09ac42e" />
+
 
 Sistem ini menyediakan antarmuka visual interaktif untuk:
 
