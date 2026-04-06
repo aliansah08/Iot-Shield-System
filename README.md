@@ -1,91 +1,150 @@
-🛡️ IoT SHIELD: Security Gateway & Automated Response
-IoT Shield adalah sistem keamanan otomatis berbasis Mini Security Operation Center (SOC). Proyek ini dirancang untuk melindungi ekosistem perangkat IoT dari serangan siber seperti Brute Force dan Unauthorized Access dengan melakukan deteksi instan dan mitigasi otomatis pada level firewall.
+# 🛡️ IoT SHIELD: Security Gateway & Automated Response
 
-📑 Daftar Isi
-Tentang Proyek
+**IoT Shield** adalah sistem keamanan otomatis berbasis *Mini Security Operation Center (SOC)*. Proyek ini dirancang untuk melindungi ekosistem perangkat IoT dari serangan siber seperti **Brute Force** dan **Unauthorized Access**, dengan kemampuan deteksi instan dan mitigasi otomatis di level firewall.
 
-Arsitektur Sistem
+---
 
-Fitur Utama
+## 📑 Daftar Isi
 
-Prasyarat
+* [Tentang Proyek](#-tentang-proyek)
+* [Arsitektur Sistem](#-arsitektur-sistem)
+* [Fitur Utama](#-fitur-utama)
+* [Prasyarat](#-prasyarat)
+* [Panduan Instalasi](#-panduan-instalasi)
+* [Metodologi Pengujian](#-metodologi-pengujian)
+* [Visualisasi Dashboard](#-visualisasi-dashboard)
 
-Panduan Instalasi
+---
 
-Metodologi Pengujian
+## 📖 Tentang Proyek
 
-Visualisasi Dashbord
+Banyak perangkat IoT masih mengabaikan aspek keamanan dasar. **IoT Shield** hadir sebagai gateway pelindung yang menjembatani jaringan eksternal dengan perangkat IoT lokal.
 
-📖 Tentang Proyek
-Banyak perangkat IoT mengabaikan aspek keamanan dasar. IoT Shield hadir sebagai gateway pelindung yang menjembatani jaringan luar dengan perangkat IoT lokal. Menggunakan Wazuh sebagai otak analisis log, sistem ini mampu "memukul balik" penyerang secara otomatis tanpa intervensi manusia (Auto-Recovered Defense).
+Dengan menggunakan **Wazuh** sebagai engine analisis log, sistem ini mampu melakukan:
 
-🏗️ Arsitektur Sistem
-Sistem bekerja dengan alur sebagai berikut:
+* Deteksi serangan secara real-time
+* Respon otomatis terhadap ancaman (*Auto-Recovered Defense*)
+* Minim intervensi manual dari administrator
 
-Detection: Monitoring log secara real-time di sisi IoT Gateway.
+---
 
-Analysis: Log dikirim ke Wazuh Manager untuk dianalisa berdasarkan rule-set.
+## 🏗️ Arsitektur Sistem
 
-Action: Jika serangan terdeteksi, Manager memerintahkan Agent untuk menjalankan active-response (Block IP via iptables).
+Alur kerja sistem:
 
-Notification: Notifikasi instan dikirim ke administrator melalui Telegram.
+1. **Detection**
+   Monitoring log secara real-time pada IoT Gateway.
 
-✨ Fitur Utama
-✅ Real-time Monitoring: Pantau aktivitas jaringan 24/7.
+2. **Analysis**
+   Log dikirim ke Wazuh Manager untuk dianalisis berdasarkan rule-set.
 
-✅ Active Response: Pemblokiran otomatis IP penyerang menggunakan iptables.
+3. **Action**
+   Jika terdeteksi serangan, sistem menjalankan *active response* berupa pemblokiran IP menggunakan `iptables`.
 
-✅ Telegram SOC: Kontrol dan notifikasi keamanan langsung di tangan Anda.
+4. **Notification**
+   Notifikasi instan dikirim ke administrator melalui Telegram.
 
-✅ Gamified Dashboard: Visualisasi serangan dengan animasi laser dan hologram interaktif.
+---
 
-🛠️ Prasyarat
-Sebelum memulai, pastikan lingkungan Anda memenuhi syarat:
+## ✨ Fitur Utama
 
-Operating System: Ubuntu Server 20.04/22.04 LTS.
+* ✅ **Real-time Monitoring**
+  Pemantauan aktivitas jaringan selama 24/7
 
-Tools: Docker & Docker Compose, Python 3.x.
+* ✅ **Active Response**
+  Pemblokiran otomatis IP penyerang menggunakan `iptables`
 
-Memory: Minimal 4GB RAM (Direkomendasikan untuk kestabilan Wazuh).
+* ✅ **Telegram SOC**
+  Notifikasi dan kontrol keamanan langsung melalui Telegram
 
-🚀 Panduan Instalasi
-1. Klon Repositori
-Bash
+* ✅ **Gamified Dashboard**
+  Visualisasi serangan dengan tampilan interaktif (laser & hologram)
+
+---
+
+## 🛠️ Prasyarat
+
+Pastikan environment Anda memenuhi kebutuhan berikut:
+
+* **Operating System**: Ubuntu Server 20.04 / 22.04 LTS
+* **Tools**: Docker, Docker Compose, Python 3.x
+* **Memory**: Minimal 4GB RAM (direkomendasikan untuk Wazuh)
+
+---
+
+## 🚀 Panduan Instalasi
+
+### 1. Clone Repository
+
+```bash
 git clone https://github.com/username/iot-shield.git
 cd iot-shield
-2. Deploy SIEM (Wazuh)
-Gunakan Docker untuk instalasi cepat:
+```
 
-Bash
+### 2. Deploy SIEM (Wazuh)
+
+```bash
 cd wazuh-docker/single-node
 docker-compose up -d
-3. Konfigurasi Active Response
-Edit file /var/ossec/etc/ossec.conf dan tambahkan konfigurasi perintah blokir:
+```
 
-XML
+### 3. Konfigurasi Active Response
+
+Edit file berikut:
+
+```
+/var/ossec/etc/ossec.conf
+```
+
+Tambahkan konfigurasi:
+
+```xml
 <active-response>
   <command>firewall-drop</command>
   <location>local</location>
   <rules_id>5716</rules_id>
 </active-response>
-🧪 Metodologi Pengujian
-Untuk memastikan sistem bekerja, lakukan simulasi serangan Brute Force palsu:
+```
 
-Monitor Log di Agent:
+---
 
-Bash
+## 🧪 Metodologi Pengujian
+
+### 1. Monitor Log pada Agent
+
+```bash
 sudo tail -f /var/ossec/logs/active-responses.log
-Jalankan Serangan (Terminal Terpisah):
+```
 
-Bash
+### 2. Simulasi Serangan (Fake Brute Force)
+
+Jalankan di terminal terpisah:
+
+```bash
 for i in {1..5}; do
   echo "Apr 6 22:00:00 ubuntu-server sshd[9999]: Failed password for root from 192.168.103.250 port 22 ssh2" | sudo tee -a /var/log/auth.log
 done
-Verifikasi Block:
-Cek apakah IP penyerang sudah masuk ke iptables:
+```
 
-Bash
+### 3. Verifikasi Pemblokiran
+
+```bash
 sudo iptables -L -n
-📊 Visualisasi Dashboard
-(Tambahkan screenshot dashboard hologram kamu di sini)
-Sistem ini menyediakan antarmuka visual yang memudahkan pemantauan titik serangan secara geografis dan statistikal.
+```
+
+Pastikan IP penyerang sudah masuk ke daftar blokir.
+
+---
+
+## 📊 Visualisasi Dashboard
+
+> Tambahkan screenshot dashboard Anda di sini
+
+Sistem ini menyediakan antarmuka visual interaktif untuk:
+
+* Monitoring serangan secara geografis
+* Analisis statistik ancaman
+* Visualisasi real-time aktivitas jaringan
+
+
+Tinggal bilang aja 👍
