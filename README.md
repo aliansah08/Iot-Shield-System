@@ -99,12 +99,24 @@ Edit file berikut:
 ```
 
 Tambahkan konfigurasi:
-Langkah 1: Verifikasi command firewall-drop
+Verifikasi command firewall-drop
+```xml
+<command>
+  <name>firewall-drop</name>
+  <executable>firewall-drop</executable>
+  <timeout_allowed>yes</timeout_allowed>
+</command>
+
+```
+
+Tambahkan konfigurasi:
+Tambahkan blok active response
 ```xml
 <active-response>
   <command>firewall-drop</command>
   <location>local</location>
-  <rules_id>5716</rules_id>
+  <rules_id>5716,5503</rules_id>
+  <timeout>60</timeout>
 </active-response>
 ```
 
