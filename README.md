@@ -157,9 +157,9 @@ docker restart single-node_wazuh.manager_1
 Untuk memastikan wazuh sudah terinstall kita coba panggil wwazuh dashboard dari browser.
 jalankan perintah berikut dibrowser:
 
-'''bash
+```bash
 https://IPSERVER
-'''
+```
 
 ## 🧪 Metodologi Pengujian
 
