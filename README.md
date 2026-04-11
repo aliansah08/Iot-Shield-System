@@ -82,7 +82,7 @@ cd wazuh-docker/single-node
 
 ```
 
-### 2. Generate Sertifikat (Wazuh)
+### 2. Generate Sertifikat
 
 Ini adalah langkah paling krusial. Tanpa sertifikat yang valid, Indexer akan menolak koneksi dari Manager dan Dashboard.
 ```bash
