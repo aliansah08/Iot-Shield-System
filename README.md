@@ -82,14 +82,20 @@ cd wazuh-docker/single-node
 
 ```
 
-### 2. Deploy SIEM (Wazuh)
+### 2. Generate Sertifikat (Wazuh)
+
+Ini adalah langkah paling krusial. Tanpa sertifikat yang valid, Indexer akan menolak koneksi dari Manager dan Dashboard.
+```bash
+docker compose -f generate-indexer-certs.yml run --rm generator
+```
+
+### 3. Deploy SIEM (Wazuh)
 
 ```bash
-cd wazuh-docker/single-node
 docker-compose up -d
 ```
 
-### 3. Konfigurasi Active Response
+### 4. Konfigurasi Active Response
 
 Edit file berikut:
 
