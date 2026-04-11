@@ -72,7 +72,7 @@ Dashboard ini menampilkan serangan cyber dalam format visual yang unik dengan ef
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/yourusername/siber-dashboard.git
+git clone https://github.com/aliansah08/siber-dashboard.git
 cd siber-dashboard/app
 
 # 2. Install dependencies
